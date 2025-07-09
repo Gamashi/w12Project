@@ -2,27 +2,140 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="w12.Views.RegisterPage"
+             xmlns:viewmodel="clr-namespace:w12.ViewModels"
+             x:DataType="viewmodel:RegisterPageViewModel"
              BackgroundColor="DimGray"
              Title="RegisterPage">
-    <Grid Margin="5">
+    
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="7*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="8*"/>
         </Grid.RowDefinitions>
 
-        <Grid>
+        <Grid Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="5*"/>
                 <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
-            <Label Text="Seja Bem Vindo!" TextColor="White" FontAttributes="Bold"/>
-            <Label Text="Primeiro, vamos realizar o seu cadastro" TextColor="White" Grid.Row="1" FontAttributes="Bold"/>
+            <Label Text="Bem-Vindo!" TextColor="White" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" FontSize="50"/>
         </Grid>
 
+        <!--<Border BackgroundColor="#ad9c5c" >
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="10,80,0,0" />
+            </Border.StrokeShape>
+            <Border.Stroke>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="Transparent"
+                          Offset="0.1" />
+                    <GradientStop Color="Transparent"
+                          Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Stroke>
+            <Border.Shadow>
+                <Shadow Brush="white" Opacity="0.8"  />
+            </Border.Shadow>
+        </Border>-->
 
-        <Grid Grid.Row="1" >
-            
-        </Grid>
-        
+        <Border Grid.Row="1" BackgroundColor="Gray"  >
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="10,80,0,0" />
+            </Border.StrokeShape>
+            <Border.Stroke>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="Transparent"
+                          Offset="0.1" />
+                    <GradientStop Color="Transparent"
+                          Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Stroke>
+            <Border.Shadow>
+                <Shadow Brush="white" Opacity="0.8"  />
+            </Border.Shadow>
+            <Grid RowSpacing="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="0.5*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="8*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="1" Grid.Column="1" >
+                    <Border Background="DimGray" >
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20,80,20,20" />
+                        </Border.StrokeShape>
+                        <Border.Stroke>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="Transparent"
+                                    Offset="0.1" />
+                                <GradientStop Color="Transparent"
+                                    Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Stroke>
+                        <!--<Border.Shadow>
+                            <Shadow Brush="Black" Opacity="0.8"  />
+                        </Border.Shadow>-->
+                        <Grid VerticalOptions="Start" Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*" />
+                                <RowDefinition Height="6*"/>
+                            </Grid.RowDefinitions>
+                            <Label Text="Nome:" TextColor="#ad9c5c" FontAttributes="Bold" FontSize="Medium" />
+                            <Entry Grid.Row="1" Text="{Binding User.Name}" TextColor="White" FontSize="Medium" Placeholder="Digite seu nome completo" PlaceholderColor="Gray"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <Grid Grid.Row="3" Grid.Column="1" >
+                    <Border Background="DimGray" >
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20,80,20,20" />
+                        </Border.StrokeShape>
+                        <Border.Stroke>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="Transparent"
+                                    Offset="0.1" />
+                                <GradientStop Color="Transparent"
+                                    Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Stroke>
+                        <!--<Border.Shadow>
+                            <Shadow Brush="Black" Opacity="0.8"  />
+                        </Border.Shadow>-->
+                        <Grid VerticalOptions="Start" Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*" />
+                                <RowDefinition Height="6*"/>
+                            </Grid.RowDefinitions>
+                            <Label Text="E-mail:" TextColor="#ad9c5c" FontAttributes="Bold" FontSize="Medium" />
+                            <Entry Grid.Row="1" Text="{Binding User.Email}" TextColor="White" FontSize="Medium" Keyboard="Email" Placeholder="Digite seu e-mail" PlaceholderColor="Gray"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+                <Grid Grid.Column="1" Grid.Row="5" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Button CornerRadius="20" Text="Cadastrar!" Command="{Binding RegisterCommand}" TextColor="White" FontAttributes="Bold" BackgroundColor="#ad9c5c" >
+                        <Button.Shadow>
+                            <Shadow Brush="White" Opacity="0.5"  />
+                        </Button.Shadow>
+
+                    </Button>
+                </Grid>
+
+            </Grid>
+        </Border>
     </Grid>
 </ContentPage>

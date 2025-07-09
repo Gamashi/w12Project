@@ -21,6 +21,6 @@ namespace w12.Models
 
         public double Weight { get; set; }
 
-        public string Observations { get; set; }
+        public string? Observations { get; set; }
     }
 }
