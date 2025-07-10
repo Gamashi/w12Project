@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using w12.Models;
 using w12.Services;
+using w12.ViewModels;
 
 namespace w12
 {
@@ -12,8 +13,8 @@ namespace w12
         {
             this._dataBase = database;
             InitializeComponent();
+            BindingContext = new MainPageViewModel(this._dataBase);
         }
-
         private async void OnCounterClicked(object? sender, EventArgs e)
         {
             BaseExercise a = new BaseExercise();

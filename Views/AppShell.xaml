@@ -4,11 +4,19 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:w12"
+    xmlns:views="clr-namespace:w12.Views"
+    Shell.TabBarBackgroundColor="DimGray"
+    Shell.TabBarForegroundColor="Orange"
+    Shell.TabBarTitleColor="Orange"
+    BackgroundColor="DimGray"   
     Title="w12">
 
     <TabBar>
-        <Tab Title="Home" >
+        <Tab Title="Home" Icon="home" >
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
-        </Tab>          
+        </Tab>
+        <Tab Title="Gráficos" Icon="data" >
+            <ShellContent ContentTemplate="{DataTemplate views:GraphicsPage}" />
+        </Tab>
     </TabBar>
 </Shell>

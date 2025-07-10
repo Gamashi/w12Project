@@ -4,7 +4,7 @@
              x:Class="w12.Views.RegisterPage"
              xmlns:viewmodel="clr-namespace:w12.ViewModels"
              x:DataType="viewmodel:RegisterPageViewModel"
-             BackgroundColor="DimGray"
+             BackgroundColor="{StaticResource Primary}"
              Title="RegisterPage">
     
     <Grid>
@@ -69,7 +69,7 @@
                     <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Row="1" Grid.Column="1" >
-                    <Border Background="DimGray" >
+                    <Border Background="{StaticResource Primary}" >
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="20,80,20,20" />
                         </Border.StrokeShape>
@@ -89,7 +89,7 @@
                                 <RowDefinition Height="3*" />
                                 <RowDefinition Height="6*"/>
                             </Grid.RowDefinitions>
-                            <Label Text="Nome:" TextColor="#ad9c5c" FontAttributes="Bold" FontSize="Medium" />
+                            <Label Text="Nome:" TextColor="{StaticResource Secondary}" FontAttributes="Bold" FontSize="Medium" />
                             <Entry Grid.Row="1" Text="{Binding User.Name}" TextColor="White" FontSize="Medium" Placeholder="Digite seu nome completo" PlaceholderColor="Gray"/>
                         </Grid>
                     </Border>
@@ -116,7 +116,7 @@
                                 <RowDefinition Height="3*" />
                                 <RowDefinition Height="6*"/>
                             </Grid.RowDefinitions>
-                            <Label Text="E-mail:" TextColor="#ad9c5c" FontAttributes="Bold" FontSize="Medium" />
+                            <Label Text="E-mail:" TextColor="{StaticResource Secondary}" FontAttributes="Bold" FontSize="Medium" />
                             <Entry Grid.Row="1" Text="{Binding User.Email}" TextColor="White" FontSize="Medium" Keyboard="Email" Placeholder="Digite seu e-mail" PlaceholderColor="Gray"/>
                         </Grid>
                     </Border>
@@ -127,7 +127,7 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <Button CornerRadius="20" Text="Cadastrar!" Command="{Binding RegisterCommand}" TextColor="White" FontAttributes="Bold" BackgroundColor="#ad9c5c" >
+                    <Button CornerRadius="20" Text="Cadastrar!" Command="{Binding RegisterCommand}" TextColor="White" FontAttributes="Bold" BackgroundColor="{StaticResource Secondary}" >
                         <Button.Shadow>
                             <Shadow Brush="White" Opacity="0.5"  />
                         </Button.Shadow>

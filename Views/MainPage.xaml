@@ -1,18 +1,106 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             Background="DimGray"
-             x:Class="w12.MainPage">
+             Background="{StaticResource Primary}"
+             x:Class="w12.MainPage"
+             xmlns:viewmodel="clr-namespace:w12.ViewModels"
+             x:DataType="viewmodel:MainPageViewModel"
+             >
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="4*"/>
-        </Grid.RowDefinitions>
-        <Button Grid.Row="1" x:Name="Botton"  Clicked="OnCounterClicked" Background="Gray" Margin="20" >
-            
-        </Button>
+    <Grid Margin="5">
+        <Grid Grid.Row="1" Grid.Column="1" RowSpacing="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="9*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="1" Text="Gustavo" VerticalOptions="Center" TextColor="White" FontSize="Medium" HorizontalOptions="Start"  />
+                <Button Grid.Column="2" ImageSource="sliders" BackgroundColor="{StaticResource PrimaryLight}" FontAttributes="Bold" CornerRadius="20"/>
+                <Button Grid.Column="4" BackgroundColor="{StaticResource Secondary}" TextColor="White" FontAttributes="Bold" CornerRadius="20" Text="Adicionar"/>
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.Column="1" RowSpacing="10" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="5*" />
+                    </Grid.ColumnDefinitions>
+                    <Border Margin="10" BackgroundColor="{StaticResource PrimaryLight}">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20,20,20,20" />
+                        </Border.StrokeShape>
+                        <Border.Stroke>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="Transparent"
+                                    Offset="0.1" />
+                                <GradientStop Color="Transparent"
+                                    Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Stroke>
+                        <Border.Shadow>
+                            <Shadow Brush="White" Opacity="0.5"  />
+                        </Border.Shadow>
+                        <StackLayout Spacing="15" Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center">
+                            <Image Source="plus" VerticalOptions="Center"   />
+                            <Image Source="dumbbell" VerticalOptions="Center"  />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateToAddExerciseCommand}"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                    </Border>
+                    <Border Grid.Column="1" Margin="10" BackgroundColor="{StaticResource PrimaryLight}">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20,20,20,20" />
+                        </Border.StrokeShape>
+                        <Border.Stroke>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="Transparent"
+                                    Offset="0.1" />
+                                <GradientStop Color="Transparent"
+                                    Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Stroke>
+                        <Border.Shadow>
+                            <Shadow Brush="White" Opacity="0.5"  />
+                        </Border.Shadow>
+                    </Border>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Border Margin="10" BackgroundColor="{StaticResource PrimaryLight}">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20,20,20,20" />
+                        </Border.StrokeShape>
+                        <Border.Stroke>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="Transparent"
+                                    Offset="0.1" />
+                                <GradientStop Color="Transparent"
+                                    Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Stroke>
+                        <Border.Shadow>
+                            <Shadow Brush="White"  Opacity="0.5"  />
+                        </Border.Shadow>
+                    </Border>
+                </Grid>
+
+            </Grid>
+        </Grid>
+
     </Grid>
 
 </ContentPage>
