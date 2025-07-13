@@ -23,6 +23,11 @@ namespace w12.ViewModels
         async void NavigateToAddExercise()
         {
             await Shell.Current.GoToAsync(nameof(AddNewExercisePage));
-        }  
+        }
+        [RelayCommand]
+        async void NavigateToAddNewBaseExercise()
+        {
+            await Shell.Current.GoToAsync(nameof(AddNewBaseExercise));
+        }
     }
 }

@@ -1,9 +1,4 @@
 ﻿using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using w12.Models;
 
 namespace w12.Services
@@ -11,20 +6,49 @@ namespace w12.Services
     public class Database
     {
         SQLiteAsyncConnection database;
-
         public async Task Init()
         {
             if (database is not null)
+            {
                 return;
+            }
 
             database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
-            var result = await database.CreateTableAsync<BaseExercise>();
-        }
+            //var result = await database.CreateTableAsync<BaseExercise>();
+            InitCategories();
 
+        }
+        private async void InitCategories( )
+        {
+            var result2 = await database.CreateTableAsync<Category>();
+
+            var existing = await database.Table<Category>().FirstOrDefaultAsync();
+            if (existing == null)
+            {
+                var baseExercises = new List<Category>
+                {
+                    new Category { Name = "Peito"},
+                    new Category { Name = "Costas" },
+                    new Category { Name = "Pernas" },
+                    new Category { Name = "Ombros" },
+                    new Category { Name = "Bíceps" },
+                    new Category { Name = "Tríceps" },
+                    new Category { Name = "Glúteos" },
+                    new Category { Name = "Panturrilha" },
+                    new Category { Name = "Abdômen" }
+                };
+                await database.InsertAllAsync(baseExercises);
+            }
+        }
         public async Task<List<BaseExercise>> GetItemsAsync()
         {
             await Init();
             return await database.Table<BaseExercise>().ToListAsync();
+        }
+        public async Task<List<Category>> GetCategoriesAsync()
+        {
+            await Init();
+            return await database.Table<Category>().ToListAsync();
         }
 
         //public async Task<List<TodoItem>> GetItemsNotDoneAsync()

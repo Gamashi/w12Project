@@ -24,7 +24,7 @@
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="1" Text="Gustavo" VerticalOptions="Center" TextColor="White" FontSize="Medium" HorizontalOptions="Start"  />
                 <Button Grid.Column="2" ImageSource="sliders" BackgroundColor="{StaticResource PrimaryLight}" FontAttributes="Bold" CornerRadius="20"/>
-                <Button Grid.Column="4" BackgroundColor="{StaticResource Secondary}" TextColor="White" FontAttributes="Bold" CornerRadius="20" Text="Adicionar"/>
+                <Button Grid.Column="4" BackgroundColor="{StaticResource Secondary}"  TextColor="White" FontAttributes="Bold" CornerRadius="20" Text="Categorias" Command="{Binding NavigateToAddNewBaseExerciseCommand}"/>
             </Grid>
 
             <Grid Grid.Row="1" Grid.Column="1" RowSpacing="10" >
