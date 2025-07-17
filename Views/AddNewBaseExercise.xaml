@@ -6,16 +6,50 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.5*"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="8*"/>
             <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1" Grid.Row="1">
+        <Grid Grid.Column="1" Grid.Row="1" VerticalOptions="Start" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" /> 
+                    <ColumnDefinition Width="9*" />
+                </Grid.ColumnDefinitions>
+                <Label Text="1 - " VerticalOptions="Center" Grid.Column="0" />
+                <Picker Grid.Column="1" VerticalOptions="Center" ItemsSource="{Binding Categories}" TitleColor="{StaticResource PrimaryDark}" Title="Selecione uma categoria" ItemDisplayBinding="{Binding Name}" TextColor="{StaticResource PrimaryDark}" BackgroundColor="{StaticResource Primary}" >
+
+                </Picker>
+            </Grid>
+            <StackLayout Grid.Row="1" Orientation="Horizontal" >
+                <Label Text="2 - " VerticalOptions="Center" /> 
+                <Entry VerticalOptions="Center"  Placeholder="Digite o nome do exercício" PlaceholderColor="LightGray" TextColor="{StaticResource PrimaryDark}" >
+                
+                </Entry>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Grid.Row="2" >
+                <Label Text="3 - " VerticalOptions="Center" />
+                <Entry VerticalOptions="Center" Placeholder="Digite a descrição do exercício" PlaceholderColor="LightGray" TextColor="{StaticResource PrimaryDark}" />
+            </StackLayout>
+            <StackLayout Grid.Row="3" Orientation="Horizontal">
+                <Label Text="4 - " VerticalOptions="Center" />
+                <Entry VerticalOptions="Center" Placeholder="Adicione o link do vídeo no YouTube" PlaceholderColor="LightGray" TextColor="{StaticResource PrimaryDark}" />
+            </StackLayout>
+
             
         </Grid>
+        <Button Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"  BackgroundColor="{StaticResource PrimaryDark}" Text="Adicionar" TextColor="White" />
     </Grid>
 </ContentPage>

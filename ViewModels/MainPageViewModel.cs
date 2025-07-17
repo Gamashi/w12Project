@@ -20,12 +20,12 @@ namespace w12.ViewModels
             //executinoExercice = _dataBase.
         }
         [RelayCommand]
-        async void NavigateToAddExercise()
+        async Task NavigateToAddExercise()
         {
             await Shell.Current.GoToAsync(nameof(AddNewExercisePage));
         }
         [RelayCommand]
-        async void NavigateToAddNewBaseExercise()
+        async Task NavigateToAddNewBaseExercise()
         {
             await Shell.Current.GoToAsync(nameof(AddNewBaseExercise));
         }
