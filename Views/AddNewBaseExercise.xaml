@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:w12.ViewModels"
+             x:DataType="viewmodel:AddNewBaseExerciseViewModel"
              x:Class="w12.Views.AddNewBaseExercise"
              BackgroundColor="{StaticResource Primary}">
     <Grid>
@@ -23,9 +25,9 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" >
+            <Grid Grid.Row="0"   >
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" /> 
+                    <ColumnDefinition Width="0.5*" /> 
                     <ColumnDefinition Width="9*" />
                 </Grid.ColumnDefinitions>
                 <Label Text="1 - " VerticalOptions="Center" Grid.Column="0" />
@@ -33,22 +35,49 @@
 
                 </Picker>
             </Grid>
-            <StackLayout Grid.Row="1" Orientation="Horizontal" >
-                <Label Text="2 - " VerticalOptions="Center" /> 
-                <Entry VerticalOptions="Center"  Placeholder="Digite o nome do exercício" PlaceholderColor="LightGray" TextColor="{StaticResource PrimaryDark}" >
-                
+            <Grid Grid.Row="1"  >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="9*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="2 - " VerticalOptions="Center" />
+                <Entry 
+                    Text="{Binding BaseExercise.Name}"
+                    Grid.Column="1" 
+                    VerticalOptions="Center"  
+                    Placeholder="Digite o nome do exercício" 
+                    PlaceholderColor="Gray" 
+                    TextColor="{StaticResource PrimaryDark}" >
                 </Entry>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal" Grid.Row="2" >
-                <Label Text="3 - " VerticalOptions="Center" />
-                <Entry VerticalOptions="Center" Placeholder="Digite a descrição do exercício" PlaceholderColor="LightGray" TextColor="{StaticResource PrimaryDark}" />
-            </StackLayout>
-            <StackLayout Grid.Row="3" Orientation="Horizontal">
-                <Label Text="4 - " VerticalOptions="Center" />
-                <Entry VerticalOptions="Center" Placeholder="Adicione o link do vídeo no YouTube" PlaceholderColor="LightGray" TextColor="{StaticResource PrimaryDark}" />
-            </StackLayout>
-
-            
+            </Grid>
+            <Grid  Grid.Row="2" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="9*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="3 - " VerticalOptions="Center" />
+                <Entry 
+                    Text="{Binding BaseExercise.Description}"
+                    Grid.Column="1" 
+                    VerticalOptions="Center" 
+                    Placeholder="Digite a descrição do exercício" 
+                    PlaceholderColor="Gray" 
+                    TextColor="{StaticResource PrimaryDark}" />
+            </Grid>
+            <Grid Grid.Row="3" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="9*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="4 - " VerticalOptions="Center" />
+                <Entry 
+                    Text="{Binding BaseExercise.Video}"
+                    Grid.Column="1" 
+                    VerticalOptions="Center" 
+                    Placeholder="Adicione o link do vídeo no YouTube" 
+                    PlaceholderColor="Gray" 
+                    TextColor="{StaticResource PrimaryDark}" />
+            </Grid>
         </Grid>
         <Button Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"  BackgroundColor="{StaticResource PrimaryDark}" Text="Adicionar" TextColor="White" />
     </Grid>

@@ -11,5 +11,6 @@ namespace w12.Models
         [Indexed]
         public Category? Category { get; set; }
         public string? Image { get; set; }      
+        public string ? Video { get; set; } 
     }
 }
