@@ -1,4 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using w12.Models;
@@ -31,28 +33,52 @@ namespace w12.ViewModels
             }
         }
         [RelayCommand]
-        public void AddNewBaseExercise()
+        public async Task AddNewBaseExercise()
         {
-            if (string.IsNullOrEmpty(BaseExercise.Name) || string.IsNullOrEmpty(BaseExercise.Description))
+            if (string.IsNullOrEmpty(BaseExercise.Name))
             {
+                ShowToast("Nome é um campo obrigatório.");
+                return;
+            }
+            if (string.IsNullOrEmpty(BaseExercise.Description))
+            {
+                ShowToast("Descrição é um campo obrigatório.");
                 return;
             }
             if (BaseExercise.Category == null)
             {
+                ShowToast("Selecione uma categoria.");
                 return;
             }
-            if (BaseExercise.Image == null)
+            if (!string.IsNullOrEmpty(BaseExercise.Video))
             {
-                return;
+                if (!YoutubeLinkValidade(BaseExercise.Video))
+                {
+                    ShowToast("Link do vídeo inválido.");
+                    return;
+                }
             }
-            if (BaseExercise.Video == null)
-            {
-                return;
-            }
+            await _dataBase.SaveBaseExercise(BaseExercise);
+            await Shell.Current.GoToAsync("..");
         }
-        private void VaidateBaseExercise()
-        {
 
+        private bool YoutubeLinkValidade(string link)
+        {
+            if (!link.Contains("youtube.com") || !link.Contains("youtu.be"))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private void ShowToast(string message)
+        {
+            CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+            string text = message;
+            ToastDuration duration = ToastDuration.Short;
+            double fontSize = 14;
+            var toast = Toast.Make(text, duration, fontSize);
+            toast.Show(cancellationTokenSource.Token);
         }
     }
 }

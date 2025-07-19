@@ -5,10 +5,11 @@
              x:DataType="viewmodel:AddNewBaseExerciseViewModel"
              x:Class="w12.Views.AddNewBaseExercise"
              BackgroundColor="{StaticResource Primary}">
-    <Grid>
+    <Grid RowSpacing="15">
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="8*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="6*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
@@ -17,7 +18,10 @@
             <ColumnDefinition Width="8*"/>
             <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1" Grid.Row="1" VerticalOptions="Start" >
+        <Grid Grid.Row="1" Grid.Column="1" VerticalOptions="Start"  HorizontalOptions="Start">
+            <Label Text="Cadastrar novo modelo de exercício" TextColor="{StaticResource PrimaryDark}" FontSize="Title" FontAttributes="Bold"  />
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="2" VerticalOptions="Start" RowSpacing="20" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -26,59 +30,76 @@
                 <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0"   >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.5*" /> 
-                    <ColumnDefinition Width="9*" />
-                </Grid.ColumnDefinitions>
-                <Label Text="1 - " VerticalOptions="Center" Grid.Column="0" />
-                <Picker Grid.Column="1" VerticalOptions="Center" ItemsSource="{Binding Categories}" TitleColor="{StaticResource PrimaryDark}" Title="Selecione uma categoria" ItemDisplayBinding="{Binding Name}" TextColor="{StaticResource PrimaryDark}" BackgroundColor="{StaticResource Primary}" >
-
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="5*" />
+                </Grid.RowDefinitions>
+                <Label Text="Categoria" VerticalOptions="Center" Grid.Row="0" TextColor="White" FontAttributes="Bold" />
+                <Picker 
+                    SelectedItem="{Binding BaseExercise.Category}"
+                    Grid.Row="1" 
+                    VerticalOptions="Center" 
+                    ItemsSource="{Binding Categories}" 
+                    TitleColor="{StaticResource PrimaryDark}" 
+                    Title="Selecione uma categoria" 
+                    ItemDisplayBinding="{Binding Name}" 
+                    TextColor="{StaticResource PrimaryDark}" 
+                    BackgroundColor="{StaticResource Primary}" >
                 </Picker>
             </Grid>
             <Grid Grid.Row="1"  >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.5*" />
-                    <ColumnDefinition Width="9*" />
-                </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Text="2 - " VerticalOptions="Center" />
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="5*" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Text="Nome do exercício" VerticalOptions="Center" TextColor="White" FontAttributes="Bold" />
                 <Entry 
                     Text="{Binding BaseExercise.Name}"
-                    Grid.Column="1" 
-                    VerticalOptions="Center"  
+                    Grid.Row="1" 
+                    VerticalOptions="Start"  
                     Placeholder="Digite o nome do exercício" 
                     PlaceholderColor="Gray" 
                     TextColor="{StaticResource PrimaryDark}" >
                 </Entry>
             </Grid>
             <Grid  Grid.Row="2" >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.5*" />
-                    <ColumnDefinition Width="9*" />
-                </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Text="3 - " VerticalOptions="Center" />
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="5*" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Text="Descrição do exercício" VerticalOptions="Center" TextColor="White" FontAttributes="Bold" />
                 <Entry 
                     Text="{Binding BaseExercise.Description}"
-                    Grid.Column="1" 
+                    Grid.Row="1" 
                     VerticalOptions="Center" 
                     Placeholder="Digite a descrição do exercício" 
                     PlaceholderColor="Gray" 
                     TextColor="{StaticResource PrimaryDark}" />
             </Grid>
             <Grid Grid.Row="3" >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.5*" />
-                    <ColumnDefinition Width="9*" />
-                </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Text="4 - " VerticalOptions="Center" />
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="5*" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Text="Link vídeo no Youtube (não obrigatório)" VerticalOptions="Center" TextColor="White" FontAttributes="Bold" />
                 <Entry 
                     Text="{Binding BaseExercise.Video}"
-                    Grid.Column="1" 
+                    Grid.Row="1" 
                     VerticalOptions="Center" 
                     Placeholder="Adicione o link do vídeo no YouTube" 
                     PlaceholderColor="Gray" 
                     TextColor="{StaticResource PrimaryDark}" />
             </Grid>
         </Grid>
-        <Button Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"  BackgroundColor="{StaticResource PrimaryDark}" Text="Adicionar" TextColor="White" />
+        <Button 
+            Command="{Binding AddNewBaseExerciseCommand}" 
+            Grid.Row="3" 
+            Grid.Column="1" 
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"  
+            BackgroundColor="{StaticResource PrimaryDark}" 
+            Text="Adicionar"
+            FontAttributes="Bold"
+            TextColor="White" />
     </Grid>
 </ContentPage>

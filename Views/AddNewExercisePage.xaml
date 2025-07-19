@@ -3,11 +3,122 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="w12.Views.AddNewExercisePage"
              BackgroundColor="{StaticResource Primary}"
+             xmlns:viewmodel="clr-namespace:w12.ViewModels"
+             x:DataType="viewmodel:AddNewExerciseViewModel"
              >
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
+    <Grid RowSpacing="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="1" Grid.Column="1" VerticalOptions="Start"  HorizontalOptions="Start">
+            <Label Text="Cadastrar novo exercício realizado" TextColor="{StaticResource PrimaryDark}" FontSize="Title" FontAttributes="Bold"  />
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="2" VerticalOptions="Start" RowSpacing="20" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0"   >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="5*" />
+                </Grid.RowDefinitions>
+                <Label Text="Categoria do exercício" VerticalOptions="Center" Grid.Row="0" TextColor="White" FontAttributes="Bold" />
+                <Picker 
+                    SelectedItem="{Binding Exercise.BaseExercise}"
+                    Grid.Row="1" 
+                    VerticalOptions="Center" 
+                    ItemsSource="{Binding Baseexercises}" 
+                    TitleColor="{StaticResource PrimaryDark}" 
+                    Title="Selecione uma categoria" 
+                    ItemDisplayBinding="{Binding Name}" 
+                    TextColor="{StaticResource PrimaryDark}" 
+                    BackgroundColor="{StaticResource Primary}" >
+                </Picker>
+            </Grid>
+            <Grid Grid.Row="1"  >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="5*" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Text="Peso em kg" VerticalOptions="Center" TextColor="White" FontAttributes="Bold" />
+                <Entry 
+                    Text="{Binding Exercise.Weight}"
+                    Grid.Row="1" 
+                    VerticalOptions="Start"  
+                    Placeholder="Digite a quantidade peso" 
+                    PlaceholderColor="Gray"
+                    Keyboard="Numeric"
+                    TextColor="{StaticResource PrimaryDark}" >
+                </Entry>
+            </Grid>
+            <Grid  Grid.Row="2" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="5*" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Text="Número de repetições" VerticalOptions="Center" TextColor="White" FontAttributes="Bold" />
+                <Entry 
+                    Text="{Binding Exercise.RepetitionCount}"
+                    Grid.Row="1" 
+                    VerticalOptions="Center" 
+                    Placeholder="Digite o número de repetições" 
+                    PlaceholderColor="Gray" 
+                    Keyboard="Numeric"
+                    TextColor="{StaticResource PrimaryDark}" />
+            </Grid>
+            <Grid Grid.Row="3" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="5*" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Text="Número de séries" VerticalOptions="Center" TextColor="White" FontAttributes="Bold" />
+                <Entry 
+                    Text="{Binding Exercise.NumberOfSets}"
+                    Grid.Row="1" 
+                    VerticalOptions="Center" 
+                    Placeholder="Digite o número de séries" 
+                    PlaceholderColor="Gray" 
+                    TextColor="{StaticResource PrimaryDark}" />
+            </Grid>
+            <Grid Grid.Row="4" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="5*" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Text="Observações" VerticalOptions="Center" TextColor="White" FontAttributes="Bold" />
+                <Entry 
+                    Text="{Binding Exercise.Observations}"
+                    Grid.Row="1" 
+                    VerticalOptions="Center" 
+                    Placeholder="Digite as observações" 
+                    PlaceholderColor="Gray" 
+                    TextColor="{StaticResource PrimaryDark}" />
+            </Grid>
+        </Grid>
+        <Button 
+            Command="{Binding AddNewBaseExerciseCommand}" 
+            Grid.Row="3" 
+            Grid.Column="1" 
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+            HorizontalOptions="Center"  
+            BackgroundColor="{StaticResource 
+            PrimaryDark}" Text="Adicionar" 
+            TextColor="White"
+            FontAttributes="Bold"
+            />
+    </Grid>
 </ContentPage>

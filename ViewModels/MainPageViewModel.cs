@@ -17,7 +17,7 @@ namespace w12.ViewModels
         [RelayCommand]
         void SearchLastExercise()
         {
-            //executinoExercice = _dataBase.
+             
         }
         [RelayCommand]
         async Task NavigateToAddExercise()

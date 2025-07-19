@@ -14,11 +14,12 @@ namespace w12.Services
             }
 
             database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
-            //var result = await database.CreateTableAsync<BaseExercise>();
-            InitCategories();
+            
+            await InitCategories();
+            var result = await database.CreateTableAsync<BaseExercise>();
 
         }
-        private async void InitCategories( )
+        private async Task InitCategories( )
         {
             var result2 = await database.CreateTableAsync<Category>();
 
@@ -51,6 +52,17 @@ namespace w12.Services
             return await database.Table<Category>().ToListAsync();
         }
 
+        public async Task<List<BaseExercise>> GetBaseExercisesAsync()
+        {
+            await Init();
+            return await database.Table<BaseExercise>().ToListAsync();
+        }
+        public async Task<BaseExercise> GetExercise()
+        {
+            await Init();
+            return await database.Table<BaseExercise>().FirstOrDefaultAsync();
+        }
+
         //public async Task<List<TodoItem>> GetItemsNotDoneAsync()
         //{
         //    await Init();
@@ -64,6 +76,15 @@ namespace w12.Services
         {
             await Init();
             return await database.Table<BaseExercise>().Where(i => i.BaseExerciseId == id).FirstOrDefaultAsync();
+        }
+
+        public async Task<int> SaveBaseExercise(BaseExercise baseExercise)
+        {
+            await Init();
+            if (baseExercise.BaseExerciseId != 0)
+                return await database.UpdateAsync(baseExercise);
+            else
+                return await database.InsertAsync(baseExercise);
         }
 
         //public async Task<int> SaveItemAsync(TodoItem item)
