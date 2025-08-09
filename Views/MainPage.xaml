@@ -6,7 +6,6 @@
              xmlns:viewmodel="clr-namespace:w12.ViewModels"
              x:DataType="viewmodel:MainPageViewModel"
              >
-
     <Grid Margin="5">
         <Grid Grid.Row="1" Grid.Column="1" RowSpacing="20">
             <Grid.RowDefinitions>
@@ -26,13 +25,11 @@
                 <Button Grid.Column="2" ImageSource="sliders" BackgroundColor="{StaticResource PrimaryLight}" FontAttributes="Bold" CornerRadius="20"/>
                 <Button Grid.Column="4" BackgroundColor="{StaticResource Secondary}"  TextColor="White" FontAttributes="Bold" CornerRadius="20" Text="Modelos" Command="{Binding NavigateToAddNewBaseExerciseCommand}"/>
             </Grid>
-
             <Grid Grid.Row="1" Grid.Column="1" RowSpacing="10" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="3*"/>
                     <RowDefinition Height="5*"/>
                 </Grid.RowDefinitions>
-
                 <Grid Grid.Row="0" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="5*" />
@@ -62,7 +59,6 @@
                                     <TapGestureRecognizer Command="{Binding NavigateToAddExerciseCommand}"/>
                                 </StackLayout.GestureRecognizers>
                             </StackLayout>
-                            
                         </Grid>
                     </Border>
                     <Border Grid.Column="1" Margin="10" BackgroundColor="{StaticResource PrimaryLight}">
@@ -100,10 +96,7 @@
                         </Border.Shadow>
                     </Border>
                 </Grid>
-
             </Grid>
         </Grid>
-
     </Grid>
-
 </ContentPage>
