@@ -15,8 +15,9 @@ namespace w12.Services
 
             database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
             
-            await InitCategories();
+            await InitCategories();            
             var result = await database.CreateTableAsync<BaseExercise>();
+            await InitExecutionExercise();
 
         }
         private async Task InitCategories( )
@@ -41,6 +42,12 @@ namespace w12.Services
                 await database.InsertAllAsync(baseExercises);
             }
         }
+        private async Task InitExecutionExercise()
+        {
+            await Init();
+            var result = await database.CreateTableAsync<ExecutionExercise>();
+            var existing = await database.Table<ExecutionExercise>().FirstOrDefaultAsync(); 
+        }
         public async Task<List<BaseExercise>> GetItemsAsync()
         {
             await Init();
@@ -57,10 +64,27 @@ namespace w12.Services
             await Init();
             return await database.Table<BaseExercise>().ToListAsync();
         }
+
+        public async Task<List<ExecutionExercise>> GetExecutionExercisesListAsync()
+        {
+            await Init();
+            var list = await database.Table<ExecutionExercise>().ToListAsync();
+            foreach (var item in list)
+            {
+                item.BaseExercise = await database.FindAsync<BaseExercise>(item.BaseExerciseId);
+            }
+            return list;
+        }   
         public async Task<BaseExercise> GetExercise()
         {
             await Init();
             return await database.Table<BaseExercise>().FirstOrDefaultAsync();
+        }
+
+        public async Task<ExecutionExercise> GetExecutionExercisesAsync()
+        {
+            await Init();
+            return await database.Table<ExecutionExercise>().FirstOrDefaultAsync();
         }
 
         //public async Task<List<TodoItem>> GetItemsNotDoneAsync()
@@ -85,6 +109,12 @@ namespace w12.Services
                 return await database.UpdateAsync(baseExercise);
             else
                 return await database.InsertAsync(baseExercise);
+        }
+
+        public async Task<int> SaveExecutionExercise(ExecutionExercise executionExercise)
+        {
+            await Init();
+            return await database.InsertAsync(executionExercise);
         }
 
         //public async Task<int> SaveItemAsync(TodoItem item)

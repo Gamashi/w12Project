@@ -15,8 +15,8 @@
         <Tab Title="Home" Icon="home" >
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
-        <Tab Title="Gráficos" Icon="data" >
+        <!--<Tab Title="Gráficos" Icon="data" >
             <ShellContent ContentTemplate="{DataTemplate views:GraphicsPage}" />
-        </Tab>
+        </Tab>-->
     </TabBar>
 </Shell>

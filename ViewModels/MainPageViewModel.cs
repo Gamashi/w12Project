@@ -9,15 +9,25 @@ namespace w12.ViewModels
     public partial class MainPageViewModel : ObservableObject
     {
         private readonly Database _dataBase;
-        private ExecutionExercise executinoExercice = new ExecutionExercise();
+        [ObservableProperty]
+        public ExecutionExercise execution = new ExecutionExercise();
         public MainPageViewModel(Database database)
         {
             this._dataBase = database;
+            GetLast();
         }
         [RelayCommand]
         void SearchLastExercise()
         {
-             
+
+        }
+
+        async void GetLast()
+        {
+            List<ExecutionExercise> executionExercises = new List<ExecutionExercise>();
+            executionExercises = await _dataBase.GetExecutionExercisesListAsync();
+
+            Execution = executionExercises.Last();
         }
         [RelayCommand]
         async Task NavigateToAddExercise()

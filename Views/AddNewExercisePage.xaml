@@ -54,7 +54,7 @@
                     <RowDefinition Height="5*" />
                     <RowDefinition Height="5*" />
                 </Grid.RowDefinitions>
-                <Label Grid.Row="0" Text="Peso em kg" VerticalOptions="Center" TextColor="White" FontAttributes="Bold" />
+                <Label Grid.Row="0" Text="Peso (kg)" VerticalOptions="Center" TextColor="White" FontAttributes="Bold" />
                 <Entry 
                     Text="{Binding Exercise.Weight}"
                     Grid.Row="1" 
@@ -91,6 +91,7 @@
                     Grid.Row="1" 
                     VerticalOptions="Center" 
                     Placeholder="Digite o número de séries" 
+                    Keyboard="Numeric"
                     PlaceholderColor="Gray" 
                     TextColor="{StaticResource PrimaryDark}" />
             </Grid>
@@ -110,7 +111,7 @@
             </Grid>
         </Grid>
         <Button 
-            Command="{Binding AddNewBaseExerciseCommand}" 
+            Command="{Binding AddNewExerciseCommand}" 
             Grid.Row="3" 
             Grid.Column="1" 
             VerticalOptions="Center" 

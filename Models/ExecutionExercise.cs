@@ -12,10 +12,10 @@ namespace w12.Models
 
         [Indexed]
         public int ExerciseSessionId { get; set; }
-        [Indexed]
         [Ignore]
         public BaseExercise? BaseExercise { get; set; }
-
+        [Indexed]                
+        public int BaseExerciseId { get; set; }
         public DateTime ExecutionDate { get; set; }
 
         public int NumberOfSets { get; set; }

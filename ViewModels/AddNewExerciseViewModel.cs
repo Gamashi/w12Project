@@ -34,7 +34,33 @@ namespace w12.ViewModels
         [RelayCommand]
         public async Task AddNewExercise()
         {
-
+            if(Exercise.BaseExercise == null)
+            {
+                ShowToast("Selecione uma categoria para o seu exercício");
+                return;
+            }
+            if(Exercise.RepetitionCount <= 0)
+            {
+                ShowToast("Número de repetições inválido");
+                return;
+            }
+            if(Exercise.NumberOfSets <=0)
+            {
+                ShowToast("Número de séries inválido");
+                return;
+            }
+            Exercise.ExecutionDate = DateTime.Now.Date;
+            Exercise.BaseExerciseId = Exercise.BaseExercise.BaseExerciseId;
+            var result =  await _dataBase.SaveExecutionExercise(Exercise); 
+            if(result > 0)
+            {
+                ShowToast("Exercício salvo com sucesso!");
+                Exercise = new ExecutionExercise();
+            }
+            else
+            {
+                ShowToast("Erro ao salvar o exercício.");
+            }
         }
         private void ShowToast(string message)
         {
