@@ -11,6 +11,10 @@ namespace w12.ViewModels
         private readonly Database _dataBase;
         [ObservableProperty]
         public ExecutionExercise execution = new ExecutionExercise();
+        [ObservableProperty]
+        public string userName = Preferences.Get("UserName", string.Empty);
+        [ObservableProperty]
+        public string dateTimeString = string.Empty;
         public MainPageViewModel(Database database)
         {
             this._dataBase = database;
@@ -21,13 +25,17 @@ namespace w12.ViewModels
         {
 
         }
-
         async void GetLast()
         {
             List<ExecutionExercise> executionExercises = new List<ExecutionExercise>();
             executionExercises = await _dataBase.GetExecutionExercisesListAsync();
 
+            if(executionExercises.Count == 0) 
+            {
+                return;
+            }               
             Execution = executionExercises.Last();
+            DateTimeString = Execution.ExecutionDate.ToString("dd/MM/yyyy");
         }
         [RelayCommand]
         async Task NavigateToAddExercise()

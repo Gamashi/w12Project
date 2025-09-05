@@ -17,6 +17,9 @@ namespace w12.ViewModels
                 return;
             }
             Preferences.Set("IsRegistered", true);
+            string[] names = user.Name.Trim().Split(' ');
+            string firstName = names[0].ToUpper();
+            Preferences.Set("UserName", firstName);
             Application.Current.MainPage = new AppShell();
         }
     }

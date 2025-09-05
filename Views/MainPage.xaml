@@ -21,7 +21,7 @@
                     <ColumnDefinition Width="4*"/>
                     <ColumnDefinition Width="0.3*"/>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="1" Text="Gustavo" VerticalOptions="Start" TextColor="White" FontSize="Medium" HorizontalOptions="Start"  />
+                <Label Grid.Column="1" Text="{Binding UserName}" VerticalOptions="Center" TextColor="White" FontSize="Medium" HorizontalOptions="Start"  />
                 <Button Grid.Column="2" ImageSource="sliders" BackgroundColor="{StaticResource PrimaryLight}" FontAttributes="Bold" CornerRadius="20"/>
                 <Button Grid.Column="4" BackgroundColor="{StaticResource Secondary}"  TextColor="White" FontAttributes="Bold" CornerRadius="20" Text="Modelos" Command="{Binding NavigateToAddNewBaseExerciseCommand}"/>
             </Grid>
@@ -76,8 +76,12 @@
                         <Border.Shadow>
                             <Shadow Brush="White" Opacity="0.5"  />
                         </Border.Shadow>
-                        <Grid Margin="10">
+                        <Grid Margin="10" ColumnSpacing="0">
                             <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
@@ -86,11 +90,15 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             <Label Grid.Row="0" Text="Último Exercício:" TextColor="{StaticResource Primary}" FontAttributes="Bold"/>
-                            <Label Grid.Row="1" Text="{Binding Execution.BaseExercise.Name}" TextColor="White" />
-                            <Label Grid.Row="2" Text="{Binding Execution.Weight}" TextColor="White"/>
-                            <Label Grid.Row="3" Text="{Binding Execution.NumberOfSets}" TextColor="White"/>
-                            <Label Grid.Row="4" Text="{Binding Execution.RepetitionCount}" TextColor="White"/>
-                            <Label Grid.Row="5" Text="{Binding Execution.ExecutionDate.Year}" TextColor="White"/>
+                            <Label Grid.Row="1" Text="{Binding Execution.BaseExercise.Name}" TextColor="White" FontAttributes="Bold"/>
+                            <Label Grid.Row="2" Text="Peso(kg):" TextColor="{StaticResource Primary}" FontAttributes="Bold"/>
+                            <Label Grid.Row="3" Text="{Binding Execution.Weight}" TextColor="White" FontAttributes="Bold"/>
+                            <Label Grid.Row="4" Text="Número de repetições:" TextColor="{StaticResource Primary}" FontAttributes="Bold"/>
+                            <Label Grid.Row="5" Text="{Binding Execution.RepetitionCount}" TextColor="White" FontAttributes="Bold"/>
+                            <Label Grid.Row="6" Text="Número de séries:" TextColor="{StaticResource Primary}" FontAttributes="Bold"/>
+                            <Label Grid.Row="7" Text="{Binding Execution.NumberOfSets}" TextColor="White" FontAttributes="Bold"/>
+                            <Label Grid.Row="8" Text="Data da Execução:" TextColor="{StaticResource Primary}" FontAttributes="Bold"/>
+                            <Label Grid.Row="9" Text="{Binding DateTimeString}" TextColor="White" FontAttributes="Bold"/>
                         </Grid>
                     </Border>
                 </Grid>
