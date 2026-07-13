@@ -4,6 +4,8 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using w12.Models;
+using CommunityToolkit.Mvvm.Messaging;
+using w12.Messages;
 
 namespace w12.ViewModels
 {
@@ -15,6 +17,8 @@ namespace w12.ViewModels
         public ObservableCollection<BaseExercise> baseexercises = new ObservableCollection<BaseExercise>();
         [ObservableProperty]
         public ExecutionExercise exercise = new ExecutionExercise();
+        [ObservableProperty]
+        public ExecutionExerciseView exerciseView = new ExecutionExerciseView();
         public AddNewExerciseViewModel(Services.Database database)
         {
             this._dataBase = database;
@@ -34,28 +38,61 @@ namespace w12.ViewModels
         [RelayCommand]
         public async Task AddNewExercise()
         {
-            if(Exercise.BaseExercise == null)
+            if (Exercise.BaseExercise == null)
             {
                 ShowToast("Selecione uma categoria para o seu exercício");
                 return;
             }
-            if(Exercise.RepetitionCount <= 0)
+            if (string.IsNullOrEmpty(ExerciseView.RepetitionCount))
             {
                 ShowToast("Número de repetições inválido");
                 return;
             }
-            if(Exercise.NumberOfSets <=0)
+            if (string.IsNullOrEmpty(ExerciseView.NumberOfSets))
             {
                 ShowToast("Número de séries inválido");
                 return;
             }
+
+            if (double.TryParse(ExerciseView.Weight, out double parsedWeight))
+            {
+                Exercise.Weight = parsedWeight;
+            }
+            else
+            {
+                ShowToast("Peso inválido");
+                return;
+            }
+
+            if (int.TryParse(ExerciseView.NumberOfSets, out int parsedNumberOfSets))
+            {
+                Exercise.NumberOfSets = parsedNumberOfSets;
+            }
+            else
+            {
+                ShowToast("Número de séries inválido");
+                return;
+            }
+            if(int.TryParse(ExerciseView.RepetitionCount, out int parsedRepetitionCount)) 
+            {
+                Exercise.RepetitionCount = parsedRepetitionCount;                
+            }
+            else 
+            {
+                ShowToast("Número de repetições inválido");
+                return;
+            }
+
             Exercise.ExecutionDate = DateTime.Now.Date;
-            Exercise.BaseExerciseId = Exercise.BaseExercise.BaseExerciseId;
-            var result =  await _dataBase.SaveExecutionExercise(Exercise); 
-            if(result > 0)
+            Exercise.BaseExerciseId = Exercise.BaseExercise.BaseExerciseId;            
+
+            var result = await _dataBase.SaveExecutionExercise(Exercise);
+            if (result > 0)
             {
                 ShowToast("Exercício salvo com sucesso!");
+                WeakReferenceMessenger.Default.Send(new ExerciseAddedMessage(Exercise));
                 Exercise = new ExecutionExercise();
+                ExerciseView = new ExecutionExerciseView();
             }
             else
             {

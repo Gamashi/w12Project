@@ -40,11 +40,6 @@ namespace w12.ViewModels
                 ShowToast("Nome é um campo obrigatório.");
                 return;
             }
-            if (string.IsNullOrEmpty(BaseExercise.Description))
-            {
-                ShowToast("Descrição é um campo obrigatório.");
-                return;
-            }
             if (BaseExercise.Category == null)
             {
                 ShowToast("Selecione uma categoria.");
@@ -59,6 +54,7 @@ namespace w12.ViewModels
                 }
             }
             await _dataBase.SaveBaseExercise(BaseExercise);
+            ShowToast("Exercício cadastrado com sucesso");
             await Shell.Current.GoToAsync("..");
         }
 

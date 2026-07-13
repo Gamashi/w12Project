@@ -6,136 +6,96 @@
              x:DataType="viewmodel:RegisterPageViewModel"
              BackgroundColor="{StaticResource Primary}"
              Title="RegisterPage">
-    
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="8*"/>
-        </Grid.RowDefinitions>
 
-        <Grid Margin="10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="5*"/>
-                <RowDefinition Height="5*"/>
-            </Grid.RowDefinitions>
-            <Label Text="Bem-Vindo!" TextColor="White" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" FontSize="50"/>
-        </Grid>
+    <Grid RowDefinitions="2.5*, 7.5*">
 
-        <!--<Border BackgroundColor="#ad9c5c" >
+        <!-- Cabeçalho Principal -->
+        <VerticalStackLayout Grid.Row="0" 
+                             VerticalOptions="Center" 
+                             HorizontalOptions="Center" 
+                             Spacing="5">
+            <Label Text="Bem-Vindo!" 
+                   TextColor="White" 
+                   FontAttributes="Bold" 
+                   FontSize="42" 
+                   HorizontalTextAlignment="Center"/>
+            <Label Text="Crie sua conta para começar" 
+                   TextColor="LightGray" 
+                   FontSize="16" 
+                   HorizontalTextAlignment="Center"/>
+        </VerticalStackLayout>
+
+        <!-- Container do Formulário (Visual Moderno "Bottom Sheet") -->
+        <Border Grid.Row="1" 
+                BackgroundColor="Gray"
+                StrokeThickness="0">
             <Border.StrokeShape>
-                <RoundRectangle CornerRadius="10,80,0,0" />
+                <RoundRectangle CornerRadius="40,40,0,0" />
             </Border.StrokeShape>
-            <Border.Stroke>
-                <LinearGradientBrush EndPoint="0,1">
-                    <GradientStop Color="Transparent"
-                          Offset="0.1" />
-                    <GradientStop Color="Transparent"
-                          Offset="1.0" />
-                </LinearGradientBrush>
-            </Border.Stroke>
             <Border.Shadow>
-                <Shadow Brush="white" Opacity="0.8"  />
+                <Shadow Brush="Black" Offset="0,-5" Radius="15" Opacity="0.15" />
             </Border.Shadow>
-        </Border>-->
 
-        <Border Grid.Row="1" BackgroundColor="Gray"  >
-            <Border.StrokeShape>
-                <RoundRectangle CornerRadius="10,80,0,0" />
-            </Border.StrokeShape>
-            <Border.Stroke>
-                <LinearGradientBrush EndPoint="0,1">
-                    <GradientStop Color="Transparent"
-                          Offset="0.1" />
-                    <GradientStop Color="Transparent"
-                          Offset="1.0" />
-                </LinearGradientBrush>
-            </Border.Stroke>
-            <Border.Shadow>
-                <Shadow Brush="white" Opacity="0.8"  />
-            </Border.Shadow>
-            <Grid RowSpacing="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.5*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="0.3*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="0.3*"/>
-                    <RowDefinition Height="3*"/>
-                    <RowDefinition Height="0.5*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="8*" />
-                    <ColumnDefinition Width="1*" />
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Row="1" Grid.Column="1" >
-                    <Border Background="{StaticResource Primary}" >
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="20,80,20,20" />
-                        </Border.StrokeShape>
-                        <Border.Stroke>
-                            <LinearGradientBrush EndPoint="0,1">
-                                <GradientStop Color="Transparent"
-                                    Offset="0.1" />
-                                <GradientStop Color="Transparent"
-                                    Offset="1.0" />
-                            </LinearGradientBrush>
-                        </Border.Stroke>
-                        <!--<Border.Shadow>
-                            <Shadow Brush="Black" Opacity="0.8"  />
-                        </Border.Shadow>-->
-                        <Grid VerticalOptions="Start" Margin="10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="3*" />
-                                <RowDefinition Height="6*"/>
-                            </Grid.RowDefinitions>
-                            <Label Text="Nome:" TextColor="{StaticResource Secondary}" FontAttributes="Bold" FontSize="Medium" />
-                            <Entry Grid.Row="1" Text="{Binding User.Name}" TextColor="White" FontSize="Medium" Placeholder="Digite seu nome completo" PlaceholderColor="Gray"/>
-                        </Grid>
-                    </Border>
-                </Grid>
+            <!-- Formulário Centralizado e com Scroll para evitar quebra em telas menores -->
+            <ScrollView VerticalOptions="FillAndExpand">
+                <VerticalStackLayout Padding="30,40,30,30" Spacing="24">
 
-                <Grid Grid.Row="3" Grid.Column="1" >
-                    <Border Background="DimGray" >
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="20,80,20,20" />
-                        </Border.StrokeShape>
-                        <Border.Stroke>
-                            <LinearGradientBrush EndPoint="0,1">
-                                <GradientStop Color="Transparent"
-                                    Offset="0.1" />
-                                <GradientStop Color="Transparent"
-                                    Offset="1.0" />
-                            </LinearGradientBrush>
-                        </Border.Stroke>
-                        <!--<Border.Shadow>
-                            <Shadow Brush="Black" Opacity="0.8"  />
-                        </Border.Shadow>-->
-                        <Grid VerticalOptions="Start" Margin="10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="3*" />
-                                <RowDefinition Height="6*"/>
-                            </Grid.RowDefinitions>
-                            <Label Text="E-mail:" TextColor="{StaticResource Secondary}" FontAttributes="Bold" FontSize="Medium" />
-                            <Entry Grid.Row="1" Text="{Binding User.Email}" TextColor="White" FontSize="Medium" Keyboard="Email" Placeholder="Digite seu e-mail" PlaceholderColor="Gray"/>
-                        </Grid>
-                    </Border>
-                </Grid>
-                <Grid Grid.Column="1" Grid.Row="5" >
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Button CornerRadius="20" Text="Cadastrar!" Command="{Binding RegisterCommand}" TextColor="White" FontAttributes="Bold" BackgroundColor="{StaticResource Secondary}" >
+                    <!-- Campo: Nome -->
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Nome" 
+                               TextColor="{StaticResource Secondary}" 
+                               FontAttributes="Bold" 
+                               FontSize="14" />
+                        <Border BackgroundColor="DimGray" StrokeThickness="0">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="12" />
+                            </Border.StrokeShape>
+                            <Entry Text="{Binding User.Name}" 
+                                   TextColor="White" 
+                                   FontSize="16" 
+                                   Placeholder="Digite seu nome completo" 
+                                   PlaceholderColor="LightGray"
+                                   Margin="15,5" />
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <!-- Campo: E-mail -->
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="E-mail" 
+                               TextColor="{StaticResource Secondary}" 
+                               FontAttributes="Bold" 
+                               FontSize="14" />
+                        <Border BackgroundColor="DimGray" StrokeThickness="0">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="12" />
+                            </Border.StrokeShape>
+                            <Entry Text="{Binding User.Email}" 
+                                   TextColor="White" 
+                                   FontSize="16" 
+                                   Keyboard="Email" 
+                                   Placeholder="Digite seu e-mail" 
+                                   PlaceholderColor="LightGray"
+                                   Margin="15,5" />
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <!-- Botão de Ação -->
+                    <Button Text="Cadastrar!" 
+                            Command="{Binding RegisterCommand}" 
+                            TextColor="White" 
+                            FontAttributes="Bold" 
+                            FontSize="18"
+                            BackgroundColor="{StaticResource Secondary}" 
+                            CornerRadius="12"
+                            HeightRequest="55"
+                            Margin="0,15,0,0">
                         <Button.Shadow>
-                            <Shadow Brush="White" Opacity="0.5"  />
+                            <Shadow Brush="{StaticResource Secondary}" Offset="0,4" Radius="10" Opacity="0.4"  />
                         </Button.Shadow>
-
                     </Button>
-                </Grid>
 
-            </Grid>
+                </VerticalStackLayout>
+            </ScrollView>
         </Border>
     </Grid>
 </ContentPage>

@@ -28,7 +28,8 @@
             <Grid Grid.Row="1" Grid.Column="1" RowSpacing="10" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="3*"/>
-                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0" >
                     <Grid.ColumnDefinitions>
@@ -98,7 +99,7 @@
                             <Label Grid.Row="6" Text="Número de séries:" TextColor="{StaticResource Primary}" FontAttributes="Bold"/>
                             <Label Grid.Row="7" Text="{Binding Execution.NumberOfSets}" TextColor="White" FontAttributes="Bold"/>
                             <Label Grid.Row="8" Text="Data da Execução:" TextColor="{StaticResource Primary}" FontAttributes="Bold"/>
-                            <Label Grid.Row="9" Text="{Binding DateTimeString}" TextColor="White" FontAttributes="Bold"/>
+                            <Label Grid.Row="9" Text="{Binding Execution.ExecutionDate, StringFormat='{0:dd/MM/yyyy}'}" TextColor="White" FontAttributes="Bold"/>
                         </Grid>
                     </Border>
                 </Grid>
@@ -118,7 +119,161 @@
                         <Border.Shadow>
                             <Shadow Brush="White"  Opacity="0.5"  />
                         </Border.Shadow>
+                        <Grid Margin="10" RowSpacing="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Text="Frequência na semana:" TextColor="{StaticResource Primary}" FontAttributes="Bold"/>
+                            <Grid Grid.Row="1" Margin="5" RowSpacing="15" ColumnSpacing="10" HorizontalOptions="Center" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Border
+                                    HeightRequest="70"
+                                    WidthRequest="70"
+                                    Stroke="{StaticResource PrimaryDark}"
+                                    StrokeThickness="3"                                   
+                                    HorizontalOptions="Center">
+                                                            <Border.StrokeShape>
+                                                                <RoundRectangle CornerRadius="15" />
+                                                            </Border.StrokeShape>
+                                                            <Label 
+                                        Text="Segunda"
+                                        FontAttributes="Bold"
+                                        TextColor="{StaticResource Primary}"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center" />
+                                </Border>
+
+                                <Border
+                                    Grid.Column="1"
+                                    HeightRequest="70"
+                                    WidthRequest="70"
+                                    Stroke="{StaticResource PrimaryDark}"
+                                    StrokeThickness="3"                                   
+                                    HorizontalOptions="Center">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="15" />
+                                    </Border.StrokeShape>
+                                    <Label 
+                                        Text="Terça"
+                                        TextColor="{StaticResource Primary}"
+                                        HorizontalOptions="Center"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="Center" />
+                                </Border>
+
+                                <Border
+                                    Grid.Column="2"
+                                    HeightRequest="70"
+                                    WidthRequest="70"
+                                    Stroke="{StaticResource PrimaryDark}"
+                                    StrokeThickness="3"                                   
+                                    HorizontalOptions="Center">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="15" />
+                                    </Border.StrokeShape>
+                                    <Label 
+                                        Text="Quarta"
+                                        TextColor="{StaticResource Primary}"
+                                        FontAttributes="Bold"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center" />
+                                </Border>
+
+                                <Border
+                                    Grid.Column="3"
+                                    HeightRequest="70"
+                                    WidthRequest="70"
+                                    Stroke="{StaticResource PrimaryDark}"
+                                    StrokeThickness="3"                                   
+                                    HorizontalOptions="Center">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="15" />
+                                    </Border.StrokeShape>
+                                    <Label 
+                                        Text="Quinta"
+                                        TextColor="{StaticResource Primary}"
+                                        FontAttributes="Bold"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center" />
+                                </Border>
+
+                                <Border
+                                    Grid.Column="0"
+                                    Grid.Row="1"
+                                    HeightRequest="70"
+                                    WidthRequest="70"
+                                    Stroke="{StaticResource PrimaryDark}"
+                                    StrokeThickness="3"                                   
+                                    HorizontalOptions="Center">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="15" />
+                                    </Border.StrokeShape>
+                                    <Label 
+                                        Text="Sexta"
+                                        TextColor="{StaticResource Primary}"
+                                        FontAttributes="Bold"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center" />
+                                </Border>
+
+                                <Border
+                                    Grid.Column="1"
+                                    Grid.Row="1"
+                                    HeightRequest="70"
+                                    WidthRequest="70"
+                                    Stroke="{StaticResource PrimaryDark}"
+                                    StrokeThickness="3"                                   
+                                    HorizontalOptions="Center">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="15" />
+                                    </Border.StrokeShape>
+                                    <Label 
+                                        Text="Sábado"
+                                        TextColor="{StaticResource Primary}"
+                                        FontAttributes="Bold"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center" />
+                                </Border>
+
+                                <Border
+                                    Grid.Column="2"
+                                    Grid.Row="1"
+                                    HeightRequest="70"
+                                    WidthRequest="70"
+                                    Stroke="{StaticResource PrimaryDark}"
+                                    StrokeThickness="3"                                   
+                                    HorizontalOptions="Center">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="15" />
+                                    </Border.StrokeShape>
+                                    <Label 
+                                        Text="Domingo"
+                                        TextColor="{StaticResource Primary}"
+                                        FontAttributes="Bold"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center" />
+                                </Border>
+                            </Grid>
+                        </Grid>
                     </Border>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" VerticalOptions="Start" HorizontalOptions="Center" Text="Versão: 1.0.0" TextColor="{StaticResource PrimaryDark}"/>
                 </Grid>
             </Grid>
         </Grid>

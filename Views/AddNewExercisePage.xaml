@@ -56,7 +56,7 @@
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Text="Peso (kg)" VerticalOptions="Center" TextColor="White" FontAttributes="Bold" />
                 <Entry 
-                    Text="{Binding Exercise.Weight}"
+                    Text="{Binding ExerciseView.Weight}"
                     Grid.Row="1" 
                     VerticalOptions="Start"  
                     Placeholder="Digite a quantidade peso" 
@@ -72,7 +72,7 @@
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Text="Número de repetições" VerticalOptions="Center" TextColor="White" FontAttributes="Bold" />
                 <Entry 
-                    Text="{Binding Exercise.RepetitionCount}"
+                    Text="{Binding ExerciseView.RepetitionCount}"
                     Grid.Row="1" 
                     VerticalOptions="Center" 
                     Placeholder="Digite o número de repetições" 
@@ -87,7 +87,7 @@
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Text="Número de séries" VerticalOptions="Center" TextColor="White" FontAttributes="Bold" />
                 <Entry 
-                    Text="{Binding Exercise.NumberOfSets}"
+                    Text="{Binding ExerciseView.NumberOfSets}"
                     Grid.Row="1" 
                     VerticalOptions="Center" 
                     Placeholder="Digite o número de séries" 
@@ -102,7 +102,7 @@
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Text="Observações" VerticalOptions="Center" TextColor="White" FontAttributes="Bold" />
                 <Entry 
-                    Text="{Binding Exercise.Observations}"
+                    Text="{Binding ExerciseView.Observations}"
                     Grid.Row="1" 
                     VerticalOptions="Center" 
                     Placeholder="Digite as observações" 

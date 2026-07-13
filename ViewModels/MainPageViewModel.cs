@@ -3,6 +3,8 @@ using w12.Services;
 using w12.Models;
 using CommunityToolkit.Mvvm.Input;
 using w12.Views;
+using CommunityToolkit.Mvvm.Messaging;
+using w12.Messages;
 
 namespace w12.ViewModels
 {
@@ -18,6 +20,19 @@ namespace w12.ViewModels
         public MainPageViewModel(Database database)
         {
             this._dataBase = database;
+            // 🎧 SE REGISTRAR PARA OUVIR:
+            WeakReferenceMessenger.Default.Register<ExerciseAddedMessage>(this, (r, m) =>
+            {
+                // m.Value contém o ExecutionExercise que você enviou lá da outra ViewModel
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    // Atualiza a propriedade que está crashada/vinculada ao seu Grid na Main
+                    Execution = m.Value;
+
+                    // OU se preferir buscar direto a versão mais fresca do banco:
+                    // LoadLastExerciseFromDbCommand.Execute(null);
+                });
+            });
             GetLast();
         }
         [RelayCommand]
