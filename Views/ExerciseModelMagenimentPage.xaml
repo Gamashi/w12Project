@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:w12.ViewModels"
+             xmlns:models="clr-namespace:w12.Models"
+             x:DataType="viewmodel:ExerciseModelMagenimentViewModel"
+             x:Class="w12.Views.ExerciseModelMagenimentPage"
+             BackgroundColor="{StaticResource Primary}"
+             >
+    <Grid RowSpacing="15" > 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="1" Grid.Column="1" VerticalOptions="Start" >
+            <Label Text="Lista de Modelos" TextColor="{StaticResource PrimaryDark}" FontSize="Title" FontAttributes="Bold"/>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="1">
+            <CollectionView ItemsSource="{Binding BaseExercises}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:BaseExercise">
+                        <!-- Frame ou Border apenas para dar um visual de "card" em cada linha -->
+                        <Frame CornerRadius="5" 
+                       Margin="5" 
+                       Padding="10" 
+                       BackgroundColor="Transparent" 
+                       HasShadow="True">
+
+                            <!-- Grid interno para dividir a linha: Dados à esquerda, Botão à direita -->
+                            <Grid ColumnDefinitions="*, Auto" VerticalOptions="Center">
+
+                                <!-- Lado Esquerdo: Informações do seu objeto -->
+                                <StackLayout Grid.Column="0" VerticalOptions="Center">
+                                    <!-- Substitua "Nome" e "Descricao" pelas propriedades reais do seu objeto -->
+                                    <Label Text="{Binding Name}" 
+                                   FontAttributes="Bold" 
+                                   FontSize="16" 
+                                   TextColor="White"/>
+                                </StackLayout>
+
+                                <!-- Lado Direito: O botão de Editar -->
+                                <Button Grid.Column="1" 
+                                Text="Editar" 
+                                VerticalOptions="Center"
+                                BackgroundColor="{StaticResource PrimaryDark}"
+                                CommandParameter="{Binding .}" />
+
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+        <Grid Grid.Row="3" Grid.Column="1">
+            <Button 
+                Text="Cadastrar novo modelo" 
+                BackgroundColor="{StaticResource PrimaryDark}" 
+                FontAttributes="Bold" 
+                Margin="15"
+                Command="{Binding NavigateToAddNewBaseExerciseCommand}"
+                TextColor="White" />
+        </Grid>
+    </Grid>
+</ContentPage>

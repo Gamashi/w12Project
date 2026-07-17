@@ -20,17 +20,11 @@ namespace w12.ViewModels
         public MainPageViewModel(Database database)
         {
             this._dataBase = database;
-            // 🎧 SE REGISTRAR PARA OUVIR:
             WeakReferenceMessenger.Default.Register<ExerciseAddedMessage>(this, (r, m) =>
             {
-                // m.Value contém o ExecutionExercise que você enviou lá da outra ViewModel
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    // Atualiza a propriedade que está crashada/vinculada ao seu Grid na Main
-                    Execution = m.Value;
-
-                    // OU se preferir buscar direto a versão mais fresca do banco:
-                    // LoadLastExerciseFromDbCommand.Execute(null);
+                    Execution = m.Value;;
                 });
             });
             GetLast();
@@ -58,9 +52,9 @@ namespace w12.ViewModels
             await Shell.Current.GoToAsync(nameof(AddNewExercisePage));
         }
         [RelayCommand]
-        async Task NavigateToAddNewBaseExercise()
+        async Task NavigateToExerciseModelMagenimentPage()
         {
-            await Shell.Current.GoToAsync(nameof(AddNewBaseExercise));
+            await Shell.Current.GoToAsync(nameof(ExerciseModelMagenimentPage));
         }
     }
 }
