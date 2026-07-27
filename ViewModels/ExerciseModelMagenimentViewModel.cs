@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using System.Collections.ObjectModel;
+using w12.Messages;
 using w12.Models;
 using w12.Services;
 using w12.Views;
@@ -16,25 +18,29 @@ namespace w12.ViewModels
         [ObservableProperty]
         public ObservableCollection<BaseExercise> baseExercises = new ObservableCollection<BaseExercise>();
         public List<BaseExercise> _baseExercises = new List<BaseExercise>();
+        private BaseExercise baseExercise = new();
         public ExerciseModelMagenimentViewModel(Database database)
         {
             this._dataBase = database;
-            GetBaseExercises();
-        }
-
-        async void GetCategories()
-        {
-            _categories = await _dataBase.GetCategoriesAsync();
-            if (_categories != null && _categories.Count > 0)
+            WeakReferenceMessenger.Default.Register<BaseExerciseAddedMessage>(this, (r, m) =>
             {
-                foreach (var cat in _categories)
+                MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    Categories.Add(cat);
-                }
-            }
+                    baseExercise = m.Value;
+                    if (baseExercise != null)
+                    {
+                        GetBaseExercises();
+                    }
+                });
+            });
+            GetBaseExercises();
         }
         async void GetBaseExercises() 
         {
+            if(BaseExercises.Count > 0)
+            {
+                BaseExercises.Clear();
+            }   
             _baseExercises = await _dataBase.GetBaseExercisesAsync();
             if (_baseExercises != null && _baseExercises.Count > 0)
             {
@@ -49,6 +55,18 @@ namespace w12.ViewModels
         async Task NavigateToAddNewBaseExercise()
         {
             await Shell.Current.GoToAsync(nameof(AddNewBaseExercise));
+        }
+        [RelayCommand]
+        async Task NavigateToEditBaseExercise(BaseExercise exercise)
+        {
+            if (exercise == null) return;
+
+            var navigationParameters = new Dictionary<string, object>
+            {
+                { "BaseExercise", exercise }
+            };
+
+            await Shell.Current.GoToAsync(nameof(AddNewBaseExercise), navigationParameters);
         }
     }
 }

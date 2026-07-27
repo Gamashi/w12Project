@@ -48,12 +48,14 @@
                                 </StackLayout>
 
                                 <!-- Lado Direito: O botão de Editar -->
-                                <Button Grid.Column="1" 
-                                Text="Editar" 
-                                VerticalOptions="Center"
-                                BackgroundColor="{StaticResource PrimaryDark}"
-                                CommandParameter="{Binding .}" />
-
+                                <Button 
+                                    Grid.Column="1" 
+                                    Text="Editar" 
+                                    TextColor="White"
+                                    VerticalOptions="Center"
+                                    BackgroundColor="{StaticResource PrimaryDark}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExerciseModelMagenimentViewModel}}, Path=NavigateToEditBaseExerciseCommand}"
+                                    CommandParameter="{Binding .}" />
                             </Grid>
                         </Frame>
                     </DataTemplate>

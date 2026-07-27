@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using w12.Services;
+using w12.ViewModels;
+using w12.Views;
 
 namespace w12
 {
@@ -22,6 +24,8 @@ namespace w12
     		builder.Logging.AddDebug();
 #endif
             builder.Services.AddSingleton<Database>();
+            builder.Services.AddTransient<AddNewBaseExerciseViewModel>();
+            builder.Services.AddTransient<AddNewBaseExercise>();
             return builder.Build();
         }
     }

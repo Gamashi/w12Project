@@ -19,7 +19,7 @@
             <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Row="1" Grid.Column="1" VerticalOptions="Start"  HorizontalOptions="Start">
-            <Label Text="Cadastrar novo modelo de exercício" TextColor="{StaticResource PrimaryDark}" FontSize="Title" FontAttributes="Bold"  />
+            <Label Text="{Binding Title}" TextColor="{StaticResource PrimaryDark}" FontSize="Title" FontAttributes="Bold"  />
         </Grid>
         <Grid Grid.Column="1" Grid.Row="2" VerticalOptions="Start" RowSpacing="20" >
             <Grid.RowDefinitions>
@@ -98,7 +98,7 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center"  
             BackgroundColor="{StaticResource PrimaryDark}" 
-            Text="Adicionar"
+            Text="{Binding ButtonText}"
             FontAttributes="Bold"
             TextColor="White" />
     </Grid>
