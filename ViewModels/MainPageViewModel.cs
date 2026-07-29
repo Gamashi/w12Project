@@ -24,16 +24,12 @@ namespace w12.ViewModels
             {
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    Execution = m.Value;;
+                    //Execution = m.Value;
+                    GetLast();
                 });
             });
             GetLast();
-        }
-        [RelayCommand]
-        void SearchLastExercise()
-        {
-
-        }
+        }      
         async void GetLast()
         {
             List<ExecutionExercise> executionExercises = new List<ExecutionExercise>();

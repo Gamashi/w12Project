@@ -36,7 +36,7 @@
                 </Grid.RowDefinitions>
                 <Label Text="Categoria" VerticalOptions="Center" Grid.Row="0" TextColor="White" FontAttributes="Bold" />
                 <Picker 
-                    SelectedItem="{Binding BaseExercise.Category}"
+                    SelectedItem="{Binding BaseExercise.Category, Mode=TwoWay}"
                     Grid.Row="1" 
                     VerticalOptions="Center" 
                     ItemsSource="{Binding Categories}" 

@@ -111,6 +111,26 @@ namespace w12.Services
                 return await database.InsertAsync(baseExercise);
         }
 
+        public async Task<int> DeleteBaseExerciseAsync(BaseExercise baseExercise)
+        {
+            await Init();
+            return await database.DeleteAsync(baseExercise);
+        }
+
+        public async Task<int> DeleteBaseExerciseWithExecutionsAsync(BaseExercise baseExercise)
+        {
+            await Init();
+
+            // 1. Remove primeiro todas as execuções (ExecutionExercise) vinculadas a este BaseExerciseId
+            // Substitua "BaseExerciseId" pelo nome exato da propriedade de chave estrangeira que você usa no ExecutionExercise
+            await database.Table<ExecutionExercise>()
+                          .Where(e => e.BaseExerciseId == baseExercise.BaseExerciseId)
+                          .DeleteAsync();
+
+            // 2. Apaga o exercício base
+            return await database.DeleteAsync(baseExercise);
+        }
+
         public async Task<int> SaveExecutionExercise(ExecutionExercise executionExercise)
         {
             await Init();

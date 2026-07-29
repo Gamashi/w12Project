@@ -29,24 +29,26 @@ namespace w12.ViewModels
         public BaseExercise value = new(); // Propriedade para receber o valor via navegação    
         public AddNewBaseExerciseViewModel(Database database)
         {
-
             this._dataBase = database;
             GetCategories();
         }
         // Executado automaticamente pelo MAUI quando o Shell passa o objeto
         partial void OnBaseExerciseChanged(BaseExercise value)
         {
-            if (value != null)
+            if (value == null)
             {
-                BaseExercise = value;
-                ButtonText = "Salvar";
-                Title = "Editar modelo de exercício";
-                // Lógica para preencher a tela com os dados do exercício
+                return;
             }
+            BaseExercise = value;
+            ButtonText = "Salvar";
+            Title = "Editar modelo de exercício";
         }
-
         async void GetCategories()
         {
+            // Evita carregar novamente se a lista já estiver preenchida
+            if (Categories.Count > 0) return;
+            
+
             _categories = await _dataBase.GetCategoriesAsync();
             if (_categories != null && _categories.Count > 0)
             {
@@ -77,6 +79,8 @@ namespace w12.ViewModels
                     return;
                 }
             }
+                
+            BaseExercise.CategoryId = BaseExercise.Category.Id;        
             await _dataBase.SaveBaseExercise(BaseExercise);
             ShowToast("Exercício cadastrado com sucesso");
             WeakReferenceMessenger.Default.Send(new BaseExerciseAddedMessage(BaseExercise));

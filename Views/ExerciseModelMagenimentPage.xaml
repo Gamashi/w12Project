@@ -36,7 +36,7 @@
                        HasShadow="True">
 
                             <!-- Grid interno para dividir a linha: Dados à esquerda, Botão à direita -->
-                            <Grid ColumnDefinitions="*, Auto" VerticalOptions="Center">
+                            <Grid ColumnDefinitions="*, Auto, Auto" VerticalOptions="Center" ColumnSpacing="15">
 
                                 <!-- Lado Esquerdo: Informações do seu objeto -->
                                 <StackLayout Grid.Column="0" VerticalOptions="Center">
@@ -52,10 +52,20 @@
                                     Grid.Column="1" 
                                     Text="Editar" 
                                     TextColor="White"
+                                    FontAttributes="Bold"
                                     VerticalOptions="Center"
                                     BackgroundColor="{StaticResource PrimaryDark}"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExerciseModelMagenimentViewModel}}, Path=NavigateToEditBaseExerciseCommand}"
                                     CommandParameter="{Binding .}" />
+
+                                <Button
+                                    Grid.Column="2"
+                                    ImageSource="trash"
+                                    VerticalOptions="Center"
+                                    BackgroundColor="Red"  
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExerciseModelMagenimentViewModel}}, Path=DeleteBaseExerciseCommand}"
+                                    CommandParameter="{Binding .}"
+                                    />
                             </Grid>
                         </Frame>
                     </DataTemplate>
