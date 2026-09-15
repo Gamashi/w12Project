@@ -4,6 +4,7 @@
              Background="{StaticResource Primary}"
              x:Class="w12.MainPage"
              xmlns:viewmodel="clr-namespace:w12.ViewModels"
+             xmlns:views="clr-namespace:w12.Views"
              x:DataType="viewmodel:MainPageViewModel"
              >
     <Grid Margin="5">
@@ -104,7 +105,9 @@
                     </Border>
                 </Grid>
                 <Grid Grid.Row="1">
-                    <Border Margin="10" BackgroundColor="{StaticResource PrimaryLight}">
+
+                    <views:OneRepMaxCardView/>
+                    <!--<Border Margin="10" BackgroundColor="{StaticResource PrimaryLight}">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="20,20,20,20" />
                         </Border.StrokeShape>
@@ -137,136 +140,10 @@
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <Border
-                                    HeightRequest="70"
-                                    WidthRequest="70"
-                                    Stroke="{StaticResource PrimaryDark}"
-                                    StrokeThickness="3"                                   
-                                    HorizontalOptions="Center">
-                                                            <Border.StrokeShape>
-                                                                <RoundRectangle CornerRadius="15" />
-                                                            </Border.StrokeShape>
-                                                            <Label 
-                                        Text="Segunda"
-                                        FontAttributes="Bold"
-                                        TextColor="{StaticResource Primary}"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center" />
-                                </Border>
 
-                                <Border
-                                    Grid.Column="1"
-                                    HeightRequest="70"
-                                    WidthRequest="70"
-                                    Stroke="{StaticResource PrimaryDark}"
-                                    StrokeThickness="3"                                   
-                                    HorizontalOptions="Center">
-                                    <Border.StrokeShape>
-                                        <RoundRectangle CornerRadius="15" />
-                                    </Border.StrokeShape>
-                                    <Label 
-                                        Text="Terça"
-                                        TextColor="{StaticResource Primary}"
-                                        HorizontalOptions="Center"
-                                        FontAttributes="Bold"
-                                        VerticalOptions="Center" />
-                                </Border>
-
-                                <Border
-                                    Grid.Column="2"
-                                    HeightRequest="70"
-                                    WidthRequest="70"
-                                    Stroke="{StaticResource PrimaryDark}"
-                                    StrokeThickness="3"                                   
-                                    HorizontalOptions="Center">
-                                    <Border.StrokeShape>
-                                        <RoundRectangle CornerRadius="15" />
-                                    </Border.StrokeShape>
-                                    <Label 
-                                        Text="Quarta"
-                                        TextColor="{StaticResource Primary}"
-                                        FontAttributes="Bold"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center" />
-                                </Border>
-
-                                <Border
-                                    Grid.Column="3"
-                                    HeightRequest="70"
-                                    WidthRequest="70"
-                                    Stroke="{StaticResource PrimaryDark}"
-                                    StrokeThickness="3"                                   
-                                    HorizontalOptions="Center">
-                                    <Border.StrokeShape>
-                                        <RoundRectangle CornerRadius="15" />
-                                    </Border.StrokeShape>
-                                    <Label 
-                                        Text="Quinta"
-                                        TextColor="{StaticResource Primary}"
-                                        FontAttributes="Bold"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center" />
-                                </Border>
-
-                                <Border
-                                    Grid.Column="0"
-                                    Grid.Row="1"
-                                    HeightRequest="70"
-                                    WidthRequest="70"
-                                    Stroke="{StaticResource PrimaryDark}"
-                                    StrokeThickness="3"                                   
-                                    HorizontalOptions="Center">
-                                    <Border.StrokeShape>
-                                        <RoundRectangle CornerRadius="15" />
-                                    </Border.StrokeShape>
-                                    <Label 
-                                        Text="Sexta"
-                                        TextColor="{StaticResource Primary}"
-                                        FontAttributes="Bold"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center" />
-                                </Border>
-
-                                <Border
-                                    Grid.Column="1"
-                                    Grid.Row="1"
-                                    HeightRequest="70"
-                                    WidthRequest="70"
-                                    Stroke="{StaticResource PrimaryDark}"
-                                    StrokeThickness="3"                                   
-                                    HorizontalOptions="Center">
-                                    <Border.StrokeShape>
-                                        <RoundRectangle CornerRadius="15" />
-                                    </Border.StrokeShape>
-                                    <Label 
-                                        Text="Sábado"
-                                        TextColor="{StaticResource Primary}"
-                                        FontAttributes="Bold"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center" />
-                                </Border>
-
-                                <Border
-                                    Grid.Column="2"
-                                    Grid.Row="1"
-                                    HeightRequest="70"
-                                    WidthRequest="70"
-                                    Stroke="{StaticResource PrimaryDark}"
-                                    StrokeThickness="3"                                   
-                                    HorizontalOptions="Center">
-                                    <Border.StrokeShape>
-                                        <RoundRectangle CornerRadius="15" />
-                                    </Border.StrokeShape>
-                                    <Label 
-                                        Text="Domingo"
-                                        TextColor="{StaticResource Primary}"
-                                        FontAttributes="Bold"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center" />
-                                </Border>
                             </Grid>
                         </Grid>
-                    </Border>
+                    </Border>-->
                 </Grid>
                 <Grid Grid.Row="2">
                     <Grid.RowDefinitions>

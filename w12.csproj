@@ -62,6 +62,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="NovaPasta\**" />
+	  <Compile Remove="NovaPasta\**" />
+	  <EmbeddedResource Remove="NovaPasta\**" />
+	  <MauiCss Remove="NovaPasta\**" />
+	  <MauiXaml Remove="NovaPasta\**" />
+	  <None Remove="NovaPasta\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\splash.png" />
 	</ItemGroup>
 
@@ -88,6 +97,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\GraphicsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\OneRepMaxCardView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\RegisterPage.xaml">

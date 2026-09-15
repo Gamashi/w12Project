@@ -5,6 +5,7 @@ using CommunityToolkit.Mvvm.Input;
 using w12.Views;
 using CommunityToolkit.Mvvm.Messaging;
 using w12.Messages;
+using w12.Helpers;
 
 namespace w12.ViewModels
 {
@@ -29,7 +30,12 @@ namespace w12.ViewModels
                 });
             });
             GetLast();
-        }      
+        }
+        public double CalculateEstimated1RM(double weight, int reps)
+        {
+            // Chamada direta do método estático
+            return OneRepMaxCalculator.EstimateOneRepMax(weight, reps);
+        }
         async void GetLast()
         {
             List<ExecutionExercise> executionExercises = new List<ExecutionExercise>();
