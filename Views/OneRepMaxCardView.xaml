@@ -2,70 +2,93 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="w12.Views.OneRepMaxCardView">
-    
-    <Border Margin="10" BackgroundColor="{StaticResource PrimaryLight}">
-        <Border.StrokeShape>
-            <RoundRectangle CornerRadius="20,20,20,20" />
-        </Border.StrokeShape>
-        <Border.Stroke>
-            <LinearGradientBrush EndPoint="0,1">
-                <GradientStop Color="Transparent"
-                                    Offset="0.1" />
-                <GradientStop Color="Transparent"
-                                    Offset="1.0" />
-            </LinearGradientBrush>
-        </Border.Stroke>
+
+    <Border Margin="10" 
+            StrokeShape="RoundRectangle 20"
+            StrokeThickness="0"
+            BackgroundColor="{StaticResource PrimaryLight}">
+
         <Border.Shadow>
-            <Shadow Brush="White"  Opacity="0.5"  />
+            <Shadow Brush="Black" Opacity="0.3" Offset="0,4" Radius="8" />
         </Border.Shadow>
-        <Grid RowSpacing="10" >
+
+        <Grid>
             <!-- 1. Imagem de Fundo -->
             <Image Source="gy"
                    Aspect="AspectFill" />
-            
-            <!--<BoxView Color="Black"
-                     Opacity="0.1" />-->
 
-            <Grid Padding="10" RowDefinitions="Auto, *, Auto">
+            <!-- 2. Overlay Escuro em Gradiente para contraste absoluto -->
+            <BoxView>
+                <BoxView.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#66000000" Offset="0.0" />
+                        <!-- Preto 40% no topo -->
+                        <GradientStop Color="#D9000000" Offset="1.0" />
+                        <!-- Preto 85% na base -->
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
 
-                <Grid Grid.Row="0" ColumnSpacing="5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="8*"/>
-                        <ColumnDefinition Width="0.1*"/>
-                    </Grid.ColumnDefinitions>
-                    <Image Source="trophy" Grid.Column="0" />
-                    <Label Text="RECORDE PESSOAL (1RM)"
-                           FontSize="15"
-                           Grid.Column="1"
+            <!-- 3. Conteúdo do Card -->
+            <Grid Padding="16" RowDefinitions="Auto, *, Auto" RowSpacing="12">
+
+                <!-- Cabeçalho do Card -->
+                <Grid Grid.Row="0" ColumnDefinitions="Auto, *, Auto" ColumnSpacing="8" VerticalOptions="Center">
+                    <Image Source="trophy" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
+
+                    <Label Text="{Binding RmTitle}"
+                           FontSize="14"
                            FontAttributes="Bold"
-                           TextColor="{StaticResource PrimaryDark}" />
-                    <Image Source="question.png" HorizontalOptions="End" Grid.Column="1" />
+                           TextColor="#FFD700" 
+                           VerticalOptions="Center"
+                           Grid.Column="1">
+                        <Label.Shadow>
+                            <Shadow Brush="Black" Opacity="0.8" Offset="1,1" Radius="2" />
+                        </Label.Shadow>
+                    </Label>
+
+                    <Image Source="question.png" 
+                           HeightRequest="18" 
+                           WidthRequest="18" 
+                           VerticalOptions="Center" 
+                           Grid.Column="2" />
                 </Grid>
 
-                <VerticalStackLayout Grid.Row="1" VerticalOptions="Center">
-                    <Label Text="{Binding BestExerciseName}"
-                           FontSize="18"
+                <!-- Área Central de Dados -->
+                <VerticalStackLayout Grid.Row="1" VerticalOptions="Center" Spacing="4">
+                    <!-- Nome do Exercício -->
+                    <Label Text="{Binding RmExerciseName}"
+                           FontSize="22"
                            FontAttributes="Bold"
-                           TextColor="White" />
+                           TextColor="White">
+                        <Label.Shadow>
+                            <Shadow Brush="Black" Opacity="0.9" Offset="1,2" Radius="4" />
+                        </Label.Shadow>
+                    </Label>
 
-                    <Label Text="{Binding Best1RMEstimate, StringFormat='Maior carga est.: {0:F1} kg'}"
-                           FontSize="14"
-                           TextColor="#E0E0E0" />
+                    <!-- Carga Estimada (só exibe se houver dados) -->
+                    <Label Text="{Binding Estimated1RM, StringFormat='Maior carga est.: {0:F1} kg'}"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="#E0E0E0"
+                           IsVisible="{Binding Has1RMData}">
+                        <Label.Shadow>
+                            <Shadow Brush="Black" Opacity="0.8" Offset="1,1" Radius="3" />
+                        </Label.Shadow>
+                    </Label>
                 </VerticalStackLayout>
 
-
-                <Button 
-                    Grid.Row="2" 
-                    Text="Toque para ver a evolução completa ➔" 
-                    FontSize="12" 
-                    TextColor="White"
-                    FontAttributes="Bold"
-                    BackgroundColor="{StaticResource PrimaryDark}"
-                    HorizontalOptions="End"
-                    CornerRadius="20"
-                    >
-                </Button>
+                <!-- Botão de Ação -->
+                <Button Grid.Row="2" 
+                        Text="Toque para ver a evolução completa ➔" 
+                        FontSize="11" 
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        BackgroundColor="{StaticResource PrimaryDark}"
+                        HorizontalOptions="End"
+                        CornerRadius="16"
+                        Padding="14,6"
+                        HeightRequest="36" />
             </Grid>
         </Grid>
     </Border>

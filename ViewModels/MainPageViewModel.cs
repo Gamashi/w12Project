@@ -1,11 +1,12 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using w12.Services;
-using w12.Models;
 using CommunityToolkit.Mvvm.Input;
-using w12.Views;
 using CommunityToolkit.Mvvm.Messaging;
-using w12.Messages;
+using System.Collections.Generic;
 using w12.Helpers;
+using w12.Messages;
+using w12.Models;
+using w12.Services;
+using w12.Views;
 
 namespace w12.ViewModels
 {
@@ -18,6 +19,16 @@ namespace w12.ViewModels
         public string userName = Preferences.Get("UserName", string.Empty);
         [ObservableProperty]
         public string dateTimeString = string.Empty;
+
+        [ObservableProperty]
+        private string _rmTitle = "RECORDE PESSOAL (1RM)";
+        [ObservableProperty]
+        private string _rmExerciseName = "Nenhum exercício registrado";
+        [ObservableProperty]
+        private double _estimated1RM;
+        [ObservableProperty]
+        private bool _has1RMData;
+
         public MainPageViewModel(Database database)
         {
             this._dataBase = database;
@@ -29,12 +40,16 @@ namespace w12.ViewModels
                     GetLast();
                 });
             });
-            GetLast();
+            GetLast();            
         }
-        public double CalculateEstimated1RM(double weight, int reps)
+        private void LoadOneRepMaxCard(List<ExecutionExercise> executions)
         {
-            // Chamada direta do método estático
-            return OneRepMaxCalculator.EstimateOneRepMax(weight, reps);
+            var summary = OneRepMaxCalculator.GetCardSummary(executions);
+
+            Has1RMData = summary.HasData;
+            RmTitle = summary.Title;
+            RmExerciseName = summary.ExerciseName;
+            Estimated1RM = summary.Estimated1RM;
         }
         async void GetLast()
         {
@@ -47,6 +62,7 @@ namespace w12.ViewModels
             }               
             Execution = executionExercises.Last();
             DateTimeString = Execution.ExecutionDate.ToString("dd/MM/yyyy");
+            LoadOneRepMaxCard(executionExercises);
         }
         [RelayCommand]
         async Task NavigateToAddExercise()
