@@ -51,7 +51,12 @@
                            HeightRequest="18" 
                            WidthRequest="18" 
                            VerticalOptions="Center" 
-                           Grid.Column="2" />
+                           Grid.Column="2"                           
+                           >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnInfoTapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
                 </Grid>
 
                 <!-- Área Central de Dados -->
@@ -88,7 +93,9 @@
                         HorizontalOptions="End"
                         CornerRadius="16"
                         Padding="14,6"
-                        HeightRequest="36" />
+                        HeightRequest="36" 
+                        Command="{Binding NavigateToProgressCommand}"
+                        />
             </Grid>
         </Grid>
     </Border>

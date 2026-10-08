@@ -21,7 +21,7 @@ namespace w12.ViewModels
         private List<Category> _categories = new List<Category>();
 
         [ObservableProperty]
-        private string title = "Cadastrar novo modelo de exercício";
+        private string title = "Cadastrar nova categoria";
 
         [ObservableProperty]
         private string buttonText = "Cadastrar";
@@ -41,7 +41,7 @@ namespace w12.ViewModels
             }
             BaseExercise = value;
             ButtonText = "Salvar";
-            Title = "Editar modelo de exercício";
+            Title = "Editar categoria";
         }
         async void GetCategories()
         {

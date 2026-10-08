@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
+             xmlns:viewmodels="clr-namespace:w12.ViewModels"
+             x:Class="w12.Views.ExerciseProgressPage"
+             x:DataType="viewmodels:ExerciseProgressViewModel"
+             BackgroundColor="{StaticResource Primary}"
+             Title="Evolução de 1RM">
+
+    <Grid RowDefinitions="Auto, *" Padding="16" RowSpacing="16">
+
+        <!-- Seletor do Exercício -->
+        <Border Grid.Row="0"
+                StrokeShape="RoundRectangle 14"
+                StrokeThickness="0"
+                BackgroundColor="{StaticResource PrimaryLight}"
+                Padding="12,4">
+            <Picker Title="Selecione um exercício"
+                    TitleColor="Gray"
+                    ItemsSource="{Binding AvailableExercises}"
+                    ItemDisplayBinding="{Binding Name}"
+                    SelectedItem="{Binding SelectedExercise}"
+                    TextColor="{StaticResource PrimaryDark}"
+                    BackgroundColor="Transparent" />
+        </Border>
+
+        <!-- Indicador de Carregamento -->
+        <ActivityIndicator Grid.Row="1"
+                           IsRunning="{Binding IsLoading}"
+                           IsVisible="{Binding IsLoading}"
+                           Color="{StaticResource PrimaryDark}"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+
+        <!-- Container do Gráfico -->
+        <Border Grid.Row="1"
+                IsVisible="{Binding HasData}"
+                StrokeShape="RoundRectangle 16"
+                StrokeThickness="0"
+                BackgroundColor="{StaticResource PrimaryLight}"
+                Padding="12">
+            <Border.Shadow>
+                <Shadow Brush="Black" Opacity="0.3" Offset="0,3" Radius="6" />
+            </Border.Shadow>
+
+            <lvc:CartesianChart Series="{Binding Series}"
+                                XAxes="{Binding XAxes}"
+                                YAxes="{Binding YAxes}" 
+                                BackgroundColor="{StaticResource PrimaryLight}"
+                                />
+        </Border>
+
+        <!-- Estado Vazio -->
+        <!-- Mensagem de Primeiro Treino Cadastrado -->
+        <VerticalStackLayout Grid.Row="1"
+                     IsVisible="{Binding IsSingleEntry}"
+                     VerticalOptions="Center"
+                     HorizontalOptions="Center"
+                     Spacing="12"
+                     Padding="20">
+            <Image Source="trophy" HeightRequest="48" WidthRequest="48" HorizontalOptions="Center" />
+            <Label Text="Primeiro treino registrado!"
+           FontSize="18"
+           FontAttributes="Bold"
+           TextColor="White"
+           HorizontalTextAlignment="Center" />
+            <Label Text="Cadastre pelo menos 2 treinos deste exercício para traçar o gráfico de evolução de carga."
+           FontSize="14"
+           TextColor="White"
+           HorizontalTextAlignment="Center" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Maui;
+using LiveChartsCore.SkiaSharpView.Maui;
 using Microsoft.Extensions.Logging;
+using SkiaSharp.Views.Maui.Controls.Hosting;
 using w12.Services;
 using w12.ViewModels;
 using w12.Views;
@@ -14,6 +16,8 @@ namespace w12
             builder
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit()
+                .UseLiveCharts()
+                .UseSkiaSharp()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -26,6 +30,8 @@ namespace w12
             builder.Services.AddSingleton<Database>();
             builder.Services.AddTransient<AddNewBaseExerciseViewModel>();
             builder.Services.AddTransient<AddNewBaseExercise>();
+            builder.Services.AddTransient<ExerciseProgressPage>();
+            builder.Services.AddTransient<ExerciseProgressViewModel>();
             return builder.Build();
         }
     }

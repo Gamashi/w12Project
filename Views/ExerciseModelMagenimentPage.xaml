@@ -22,7 +22,7 @@
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Row="1" Grid.Column="1" VerticalOptions="Start" >
-            <Label Text="Lista de Modelos" TextColor="{StaticResource PrimaryDark}" FontSize="Title" FontAttributes="Bold"/>
+            <Label Text="Lista de Categorias" TextColor="{StaticResource PrimaryDark}" FontSize="Title" FontAttributes="Bold"/>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="1">
             <CollectionView ItemsSource="{Binding BaseExercises}">
@@ -74,7 +74,7 @@
         </Grid>
         <Grid Grid.Row="3" Grid.Column="1">
             <Button 
-                Text="Cadastrar novo modelo" 
+                Text="Cadastrar nova categoria" 
                 BackgroundColor="{StaticResource PrimaryDark}" 
                 FontAttributes="Bold" 
                 Margin="15"

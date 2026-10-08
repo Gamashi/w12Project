@@ -34,14 +34,14 @@
                     <RowDefinition Height="5*" />
                     <RowDefinition Height="5*" />
                 </Grid.RowDefinitions>
-                <Label Text="Categoria" VerticalOptions="Center" Grid.Row="0" TextColor="White" FontAttributes="Bold" />
+                <Label Text="Grupo Muscular" VerticalOptions="Center" Grid.Row="0" TextColor="White" FontAttributes="Bold" />
                 <Picker 
                     SelectedItem="{Binding BaseExercise.Category, Mode=TwoWay}"
                     Grid.Row="1" 
                     VerticalOptions="Center" 
                     ItemsSource="{Binding Categories}" 
                     TitleColor="{StaticResource PrimaryDark}" 
-                    Title="Selecione uma categoria" 
+                    Title="Selecione um grupo muscular" 
                     ItemDisplayBinding="{Binding Name}" 
                     TextColor="{StaticResource PrimaryDark}" 
                     BackgroundColor="{StaticResource Primary}" >

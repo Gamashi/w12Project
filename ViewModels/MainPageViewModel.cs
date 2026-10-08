@@ -74,5 +74,15 @@ namespace w12.ViewModels
         {
             await Shell.Current.GoToAsync(nameof(ExerciseModelMagenimentPage));
         }
+        [RelayCommand]
+        async Task NavigateToHistory()
+        {
+            await Shell.Current.GoToAsync(nameof(HistoryPage));
+        }
+        [RelayCommand]
+        private async Task NavigateToProgressAsync()
+        {
+            await Shell.Current.GoToAsync(nameof(ExerciseProgressPage));
+        }
     }
 }

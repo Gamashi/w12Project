@@ -10,6 +10,8 @@ namespace w12
             Routing.RegisterRoute(nameof(AddNewExercisePage), typeof(AddNewExercisePage));
             Routing.RegisterRoute(nameof(AddNewBaseExercise), typeof(AddNewBaseExercise));
             Routing.RegisterRoute(nameof(ExerciseModelMagenimentPage), typeof(ExerciseModelMagenimentPage));
+            Routing.RegisterRoute(nameof(HistoryPage), typeof(HistoryPage));
+            Routing.RegisterRoute(nameof(ExerciseProgressPage), typeof(ExerciseProgressPage));
         }
     }
 }
